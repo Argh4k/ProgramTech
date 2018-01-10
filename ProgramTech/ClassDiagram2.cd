@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProgramTech.ScoringHandler">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScoringHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgramTech.WordService">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAIAAIAAAA=</HashCode>
+      <FileName>WordService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgramTech.Word">
+    <Position X="2.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAEAIAAAAAABAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Word.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgramTech.SearchEngine">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>SearchEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgramTech.WordController">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAACAAAAA=</HashCode>
+      <FileName>WordController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgramTech.WordDAO">
+    <Position X="5.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAIAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WordDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ProgramTech.Language">
+    <Position X="5.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Language.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
