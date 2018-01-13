@@ -7,24 +7,30 @@ namespace ProgramTech
 {
     public class WordService
     {
-        public List<Word> getAll(Language language)
+        public static List<Word> getAll(Language language)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<Word> getByFirstCharacter(string language, string character)
+        public static List<Word> getByFirstCharacter(string language, string character)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool save(string word)
+        public static bool save(string word)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool saveList(List<Word> words, Language language)
+        public static bool saveList(List<Word> words, Language language)
         {
-            throw new System.NotImplementedException();
+            DatabaseController.addTable(language.ToString());
+            foreach(Word word in words)
+            {
+                WordDAO.save(word, language.ToString());
+            }
+            DatabaseController.closeConnection();
+            return true;
         }
     }
 }

@@ -30,6 +30,9 @@
   </Class>
   <Class Name="ProgramTech.WordController">
     <Position X="0.5" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAACAAAAA=</HashCode>
       <FileName>WordController.cs</FileName>
@@ -42,10 +45,17 @@
       <FileName>WordDAO.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="ProgramTech.DatabaseController">
+    <Position X="6.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DatabaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Enum Name="ProgramTech.Language">
     <Position X="5.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Language.cs</FileName>
     </TypeIdentifier>
   </Enum>

@@ -11,22 +11,43 @@ namespace ProgramTech
         private string id;
         private int length;
         private int score;
+        private string content;
 
         public Word(string content)
         {
-            throw new System.NotImplementedException();
+            this.content = content;
+            this.length = content.Length;
+            this.score = 5;
+            this.firstLetter = content.First();
         }
 
         public string Content
         {
             get
             {
-                throw new System.NotImplementedException();
+                return content;
             }
 
             set
             {
             }
+        }
+
+        public int Length
+        {
+            get
+            {
+                return length;
+            }
+        }
+
+        public int Score
+        {
+            get
+            {
+                return score;
+            }
+
         }
     }
 }

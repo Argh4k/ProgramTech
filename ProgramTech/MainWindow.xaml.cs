@@ -23,6 +23,10 @@ namespace ProgramTech
         public MainWindow()
         {
             InitializeComponent();
+            WordController controler = new WordController();
+            
+            controler.addDictionaryFromFile(ProgramTech.Language.EN, "slowa.txt");
+            WordDAO.findAll(ProgramTech.Language.EN);
         }
     }
 }

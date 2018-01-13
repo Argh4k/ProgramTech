@@ -1,15 +1,27 @@
-﻿using System;
+﻿using System; 
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace ProgramTech
 {
     public class WordController
     {
-        public List<Word> addDictionaryFromFile(Language language, File file)
+        public bool addDictionaryFromFile(Language language, string path)
         {
-            throw new System.NotImplementedException();
+            List<Word> words = new List<Word>();
+            if(!File.Exists(path))
+            {
+                return false;
+            } else
+            {
+                foreach(string wordstring in File.ReadLines(path))
+                {
+                    words.Add(new Word(wordstring));
+                }
+            }
+            return WordService.saveList(words, language);
         }
 
         public List<Word> downloadDictionary(Language language)
