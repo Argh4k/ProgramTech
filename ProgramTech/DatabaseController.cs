@@ -47,6 +47,7 @@ namespace ProgramTech
             string checkQuery = string.Format("SELECT db_id('{0}')", tableName);
             using (var command = new SqlCommand(checkQuery, connection))
             {
+                //If table does not exist, add one
                 if (command.ExecuteScalar() != DBNull.Value)
                 {
                     string query = string.Format("CREATE TABLE {0}(word varchar(50), score int, first_letter char(1), length int);", tableName);

@@ -51,7 +51,14 @@ namespace ProgramTech
             var connection = DatabaseController.getSqlConnection();
             string query = string.Format("INSERT INTO {0} VALUES ('{1}', '{2}', '{3}', '{4}');", language, word.Content, word.Score, word.Content.First(), word.Length);
             using (var command = new SqlCommand(query, connection))
-                command.ExecuteNonQuery();
+                try
+                {
+                    command.ExecuteNonQuery();
+                } catch (SqlException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return false;
+                }
             return true;
         }
             

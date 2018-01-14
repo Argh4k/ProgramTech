@@ -9,12 +9,12 @@ namespace ProgramTech
     {
         public static List<Word> getAll(Language language)
         {
-            throw new System.NotImplementedException();
+            return WordDAO.findAll(language);
         }
 
-        public static List<Word> getByFirstCharacter(string language, string character)
+        public static List<Word> getByFirstCharacter(Language language, char character)
         {
-            throw new System.NotImplementedException();
+            return WordDAO.findyByFirstCharacter(language, character);
         }
 
         public static bool save(string word)
