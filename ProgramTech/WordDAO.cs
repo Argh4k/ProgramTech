@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 
 namespace ProgramTech
 {
-    public class WordDAO
+    public class WordDAO : IDisposable
     {
-        public static List<Word> findAll(Language language)
+        SqlConnection connection;
+
+        public WordDAO()
+        {
+            connection = DatabaseController.getSqlConnection();
+        }
+
+        public List<Word> findAll(Language language, int maxLength)
         {
             List<Word> toReturn = new List<Word>(); ;
-            var connection = DatabaseController.getSqlConnection();
-            string query = string.Format("SELECT * FROM {0}", language.ToString());
+            string query = string.Format("SELECT * FROM {0} WHERE length < {1} ORDER BY SCORE DESC", language.ToString(), maxLength);
             using (var command = new SqlCommand(query, connection))
             {
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -27,11 +34,10 @@ namespace ProgramTech
             return toReturn; 
         }
 
-        public static List<Word> findyByFirstCharacter(Language language, char character)
+        public List<Word> findyByFirstCharacter(Language language, char character, int maxLength)
         {
             List<Word> toReturn = new List<Word>(); ;
-            var connection = DatabaseController.getSqlConnection();
-            string query = string.Format("SELECT * FROM {0} WHERE first_letter = '{1}' ORDER BY SCORE DESC", language.ToString());
+            string query = string.Format("SELECT * FROM {0} WHERE first_letter = '{1}' AND length < {2} ORDER BY SCORE DESC", language.ToString(), character, maxLength);
             using (var command = new SqlCommand(query, connection))
             {
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -46,9 +52,8 @@ namespace ProgramTech
         }
 
 
-        public static bool save(Word word, string language)
+        public bool save(Word word, string language)
         {
-            var connection = DatabaseController.getSqlConnection();
             string query = string.Format("INSERT INTO {0} VALUES ('{1}', '{2}', '{3}', '{4}');", language, word.Content, word.Score, word.Content.First(), word.Length);
             using (var command = new SqlCommand(query, connection))
                 try
@@ -61,6 +66,22 @@ namespace ProgramTech
                 }
             return true;
         }
-            
+
+        public bool saveBulk(DataTable wordsTable, string language)
+        {
+            using(SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+            {
+                bulkCopy.DestinationTableName = language;
+                bulkCopy.WriteToServer(wordsTable);
+            }
+            return true;
+        }
+
+        
+
+        public void Dispose()
+        {
+            connection.Close();
+        }
     }
 }

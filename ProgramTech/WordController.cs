@@ -18,7 +18,10 @@ namespace ProgramTech
             {
                 foreach(string wordstring in File.ReadLines(path))
                 {
-                    words.Add(new Word(wordstring));
+                    if(Word.isVaild(wordstring))
+                    {
+                        words.Add(new Word(wordstring));
+                    }
                 }
             }
             return WordService.saveList(words, language);
