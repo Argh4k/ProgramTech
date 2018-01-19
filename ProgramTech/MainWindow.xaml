@@ -10,6 +10,7 @@
         <ImageBrush ImageSource="images/PTBackground2.png"/>
     </Window.Background>
     <StackPanel>
+        <!-- Description -->
         <Border Padding="100 200 100 0">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -21,6 +22,7 @@
                 <TextBlock Grid.Column="1" Text="Number of results" FontSize="17" Foreground="White"/>
             </Grid>
         </Border>
+        <!-- Row of Input-->
         <Border Padding="100 0 100 20">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -28,7 +30,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
+                <!-- Letters -->
                 <Grid Margin="0 0 20 0" Grid.Column="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -50,11 +52,13 @@
                     <TextBox MaxLength="1" Padding="6" Grid.Column="6"/>
                     <TextBox MaxLength="1" Padding="6" Grid.Column="7"/>
                 </Grid>
-                <!-- <TextBox Padding="6" Margin="0 0 20 0" Grid.Column="0" />-->
+                <!-- number -->
                 <TextBox MaxLength="1" Grid.Column="1"/>
+                <!-- Submit button -->
                 <Button Margin="20 0 0 0" Grid.Column="2" Content="Submit"/>
             </Grid>
         </Border>
+        <!-- Results -->
         <Border Padding="100 0">
             <Grid>
                 <Label/>
