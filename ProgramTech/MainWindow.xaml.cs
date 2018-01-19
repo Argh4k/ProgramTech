@@ -23,23 +23,26 @@ namespace ProgramTech
         public MainWindow()
         {
             InitializeComponent();
-            /*
+            
             WordController contr = new WordController();
             ScoringHandler sc = new ScoringHandler("ScoringHandler.xml");
             Word.setScoringHandler(sc);
             contr.addDictionaryFromFile(ProgramTech.Language.EN, "words.txt");
             SearchEngine seng = new SearchEngine(5);
             List<char> characters = new List<char>();
+            characters.Add('c');
             characters.Add('a');
-            characters.Add('l');
-            characters.Add('l');
-            characters.Add('y');
-            characters.Add('k');
-            foreach(Word word in seng.search(characters, ProgramTech.Language.EN))
+            characters.Add('r');
+            characters.Add('r');
+            characters.Add('o');
+            characters.Add('t');
+            foreach (Word word in seng.search(characters, ProgramTech.Language.EN))
             {
                 Console.WriteLine(word.Content + " " + word.Score);
             }
-            */
+            //log4net.LogManager.GetLogger(typeof(WordController)).Info(String.Format("{0} not added to database as it is not consisted only of letters", wordstring));
+
+            WordService.getInstance().Dispose();
             
             
         }

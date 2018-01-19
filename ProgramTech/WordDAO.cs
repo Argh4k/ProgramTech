@@ -9,6 +9,7 @@ namespace ProgramTech
 {
     public class WordDAO : IDisposable
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(WordDAO));
         SqlConnection connection;
 
         public WordDAO()
@@ -19,14 +20,13 @@ namespace ProgramTech
         public List<Word> findAll(Language language, int maxLength)
         {
             List<Word> toReturn = new List<Word>(); ;
-            string query = string.Format("SELECT * FROM {0} WHERE length < {1} ORDER BY SCORE DESC", language.ToString(), maxLength);
+            string query = string.Format("SELECT * FROM {0} WHERE length <= {1} ORDER BY SCORE DESC", language.ToString(), maxLength);
             using (var command = new SqlCommand(query, connection))
             {
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        Console.WriteLine(reader["word"].ToString());
                         toReturn.Add(new Word(reader["word"].ToString()));
                     }
                 }
@@ -37,7 +37,7 @@ namespace ProgramTech
         public List<Word> findyByFirstCharacter(Language language, char character, int maxLength)
         {
             List<Word> toReturn = new List<Word>(); ;
-            string query = string.Format("SELECT * FROM {0} WHERE first_letter = '{1}' AND length < {2} ORDER BY SCORE DESC", language.ToString(), character, maxLength);
+            string query = string.Format("SELECT * FROM {0} WHERE first_letter = '{1}' AND length <= {2} ORDER BY SCORE DESC", language.ToString(), character, maxLength);
             using (var command = new SqlCommand(query, connection))
             {
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -69,10 +69,17 @@ namespace ProgramTech
 
         public bool saveBulk(DataTable wordsTable, string language)
         {
-            using(SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+            try
             {
-                bulkCopy.DestinationTableName = language;
-                bulkCopy.WriteToServer(wordsTable);
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+                {
+                    bulkCopy.DestinationTableName = language;
+                    bulkCopy.WriteToServer(wordsTable);
+                }
+            } catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
             }
             return true;
         }

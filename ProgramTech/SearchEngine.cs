@@ -35,7 +35,7 @@ namespace ProgramTech
         private List<Word> searchSingleCharacter(char ch, Language language, int maxLength)
         {
             List<Word> words;
-            words = WordService.getByFirstCharacter(language, ch, maxLength, true);
+            words = WordService.getInstance().getByFirstCharacter(language, ch, maxLength, true);
             return words;
         }
 
