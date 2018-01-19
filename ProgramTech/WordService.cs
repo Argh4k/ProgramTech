@@ -6,16 +6,28 @@ using System.Data;
 
 namespace ProgramTech
 {
-    public class WordService
+    public class WordService : IDisposable
     {
         ///Instead of using static variable it would be better to implement this as singleton with dispensable interface
-        static WordDAO staticDao;
-        static WordService()
+        WordDAO staticDao;
+
+        private static WordService instance;
+
+        private WordService()
         {
             staticDao = new WordDAO();
         }
 
-        public static List<Word> getAll(Language language, int maxLength, bool async = false)
+        public static WordService getInstance()
+        {
+            if(instance == null)
+            {
+                instance = new WordService();
+            }
+            return instance;
+        }
+
+        public List<Word> getAll(Language language, int maxLength, bool async = false)
         {
             if(async)
             {
@@ -29,7 +41,7 @@ namespace ProgramTech
             }
         }
 
-        public static List<Word> getByFirstCharacter(Language language, char character, int maxLength, bool async = false)
+        public List<Word> getByFirstCharacter(Language language, char character, int maxLength, bool async = false)
         {
             if (async)
             {
@@ -44,7 +56,7 @@ namespace ProgramTech
             }
         }
 
-        public static bool save(Word word, Language language, bool async = false)
+        public bool save(Word word, Language language, bool async = false)
         {
             if (async)
             {
@@ -60,7 +72,7 @@ namespace ProgramTech
         }
 
     
-        public static bool saveList(List<Word> words, Language language, bool async = false)
+        public bool saveList(List<Word> words, Language language, bool async = false)
         {
             DatabaseController.addTable(language.ToString());
             DataTable wordTable = toDataTable(words);
@@ -76,10 +88,7 @@ namespace ProgramTech
             }
             else
             {
-                //foreach (Word word in words)
-                //{
                     staticDao.saveBulk(wordTable, language.ToString());
-                //}
             }
             return true;
         }
@@ -103,6 +112,11 @@ namespace ProgramTech
                 dt.Rows.Add(dr);
             }
             return dt;
+        }
+
+        public void Dispose()
+        {
+            staticDao.Dispose();
         }
     }
 }

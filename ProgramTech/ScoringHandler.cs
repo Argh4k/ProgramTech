@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using System.IO;
+using System.Xml;
+using System.Collections;
 
 namespace ProgramTech
 {
@@ -10,17 +13,28 @@ namespace ProgramTech
     {
         private Dictionary<char, int> charScores = new Dictionary<char, int>();
         // Use default values
-        public ScoringHandler()
+        public ScoringHandler() : this("ScoringHandler.xml")
         {
 
         }
 
         public ScoringHandler(string filePath)
         {
-           foreach(XElement xe in XElement.Load(filePath).Elements("letter"))
+            try
             {
-                charScores.Add(xe.Element("name").Value.First(), Int32.Parse(xe.Element("value").Value));
+                foreach (XElement xe in XElement.Load(filePath).Elements("letter"))
+                {
+                    charScores.Add(xe.Element("name").Value.First(), Int32.Parse(xe.Element("value").Value));
+                }
+            }catch(FileNotFoundException ex)
+            {
+                throw new ScoringFileNotFound(filePath);
             }
+            catch(XmlException ex)
+            {
+                throw new ScoringFileBadFormatted(ex.Message);
+            }
+           
         }
 
 
@@ -39,8 +53,7 @@ namespace ProgramTech
                 } 
                 catch(KeyNotFoundException ex)
                 {
-                    Console.WriteLine("Could not find {0} in letters", ch);
-                    throw ex;
+                    throw new ScoringLackOfLetter(ch);
                 }
             }
             return value;
