@@ -5,8 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgramTech"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="700" Width="1050">
+    <Window.Background>
+        <ImageBrush ImageSource="images/PTBackground2.png"/>
+    </Window.Background>
+    <StackPanel>
+        <Border Padding="100 200 100 0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Letters" FontSize="17" Foreground="White"/>
+                <TextBlock Grid.Column="1" Text="Number of results" FontSize="17" Foreground="White"/>
+            </Grid>
+        </Border>
+        <Border Padding="100 0 100 20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Margin="0 0 20 0" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBox MaxLength="1" Padding="6" Grid.Column="0"/>
+                    <TextBox MaxLength="1" Padding="6" Grid.Column="1"/>
+                    <TextBox MaxLength="1" Padding="6" Grid.Column="2"/>
+                    <TextBox MaxLength="1" Padding="6" Grid.Column="3"/>
+                    <TextBox MaxLength="1" Padding="6" Grid.Column="4"/>
+                    <TextBox MaxLength="1" Padding="6" Grid.Column="5"/>
+                    <TextBox MaxLength="1" Padding="6" Grid.Column="6"/>
+                    <TextBox MaxLength="1" Padding="6" Grid.Column="7"/>
+                </Grid>
+                <!-- <TextBox Padding="6" Margin="0 0 20 0" Grid.Column="0" />-->
+                <TextBox MaxLength="1" Grid.Column="1"/>
+                <Button Margin="20 0 0 0" Grid.Column="2" Content="Submit"/>
+            </Grid>
+        </Border>
+        <Border Padding="100 0">
+            <Grid>
+                <Label/>
+            </Grid>
+        </Border>
+    </StackPanel>
 </Window>
