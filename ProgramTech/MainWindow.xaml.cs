@@ -28,23 +28,51 @@ namespace ProgramTech
             ScoringHandler sc = new ScoringHandler("ScoringHandler.xml");
             Word.setScoringHandler(sc);
             contr.addDictionaryFromFile(ProgramTech.Language.EN, "words.txt");
-            SearchEngine seng = new SearchEngine(5);
+            
+            
+            
+        }
+
+        private void button_submit_Click(object sender, RoutedEventArgs e)
+        {
+            int numbOfResults;
+            int.TryParse(txt_result_no.Text, out numbOfResults);
+            TextBox[] txt_chars = new TextBox[] { txt_char1, txt_char2, txt_char3, txt_char4, txt_char5, txt_char6, txt_char7, txt_char8 };
+            SearchEngine seng = new SearchEngine(numbOfResults);
             List<char> characters = new List<char>();
-            characters.Add('c');
-            characters.Add('a');
-            characters.Add('r');
-            characters.Add('r');
-            characters.Add('o');
-            characters.Add('t');
-            foreach (Word word in seng.search(characters, ProgramTech.Language.EN))
+            foreach(TextBox textBox in txt_chars)
             {
-                Console.WriteLine(word.Content + " " + word.Score);
+                if(textBox.Text.Length > 0)
+                {
+                    characters.Add(textBox.Text[0]);
+                }
             }
+
+            wordsGrid.ItemsSource = seng.search(characters, ProgramTech.Language.EN);
+
             //log4net.LogManager.GetLogger(typeof(WordController)).Info(String.Format("{0} not added to database as it is not consisted only of letters", wordstring));
 
             WordService.getInstance().Dispose();
-            
-            
+        }
+
+        private void txt_char_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txt_char = (TextBox)sender;
+            if (!txt_char.Text.Equals(String.Empty)  && !System.Text.RegularExpressions.Regex.IsMatch(txt_char.Text, "^[a-zA-Z]"))
+            {
+                MessageBox.Show("This textbox accepts only alphabetical characters");
+                txt_char.Text = String.Empty;
+            }
+        }
+
+        private void txt_number_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txt_number = (TextBox)sender;
+            if (!txt_number.Text.Equals(String.Empty) && !System.Text.RegularExpressions.Regex.IsMatch(txt_number.Text, "^[0-9]+"))
+            {
+                MessageBox.Show("This textbox accepts only numbers");
+                txt_number.Text = String.Empty;
+            }
         }
     }
 }
