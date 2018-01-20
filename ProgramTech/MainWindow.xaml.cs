@@ -27,7 +27,8 @@ namespace ProgramTech
             WordController contr = new WordController();
             ScoringHandler sc = new ScoringHandler("ScoringHandler.xml");
             Word.setScoringHandler(sc);
-            contr.addDictionaryFromFile(ProgramTech.Language.EN, "words.txt");
+            //contr.addDictionaryFromFile(ProgramTech.Language.EN, "words.txt");
+            contr.downloadDictionary(ProgramTech.Language.EN, "https://raw.githubusercontent.com/dwyl/english-words/master/words.txt");
             SearchEngine seng = new SearchEngine(5);
             List<char> characters = new List<char>();
             characters.Add('c');

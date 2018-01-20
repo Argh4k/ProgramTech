@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Net;
 
 namespace ProgramTech
 {
@@ -32,9 +33,29 @@ namespace ProgramTech
             return WordService.getInstance().saveList(words, language);
         }
 
-        public List<Word> downloadDictionary(Language language)
+        public bool downloadDictionary(Language language, string url)
         {
-            throw new System.NotImplementedException();
+            List<Word> words = new List<Word>();
+            using(var client = new WebClient())
+            {
+                using (System.IO.StringReader reader = new System.IO.StringReader(client.DownloadString(new Uri(url))))
+                {
+                    string line;
+                    while((line = reader.ReadLine()) != null) {
+                        if (Word.isVaild(line))
+                        {
+                            words.Add(new Word(line));
+                        }
+                        else
+                        {
+                            log.Info(String.Format("{0} was not added to database, because it is not forged only from letters", line));
+                        }
+                    }
+                   
+                }
+            }
+            return WordService.getInstance().saveList(words, language);
         }
     }
+
 }
