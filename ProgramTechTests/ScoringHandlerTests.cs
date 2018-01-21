@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ProgramTech.Tests
 {
@@ -35,11 +36,32 @@ namespace ProgramTech.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(KeyNotFoundException))]
+        [ExpectedException(typeof(ScoringLackOfLetter))]
         public void scoreWordBadLetter()
         {
             string word = "de";
             testHandler.scoreWord(word);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ScoringFileNotFound))]
+        public void scoreFileNotFound()
+        {
+            int i = 0;
+            string fileName = "abcdfgh";
+            while(File.Exists(fileName))
+            {
+                fileName += i;
+                i++;
+            }
+            ScoringHandler sc = new ScoringHandler(fileName);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ScoringFileBadFormatted))]
+        public void scoreFileBadFormatted()
+        {
+            ScoringHandler sc = new ScoringHandler("../../ScoringHandlerBadFormatted.xml");
         }
     }
 }

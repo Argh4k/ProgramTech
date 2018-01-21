@@ -26,7 +26,7 @@ namespace ProgramTech
             WordController contr = new WordController();
             ScoringHandler sc = new ScoringHandler("ScoringHandler.xml");
             Word.setScoringHandler(sc);
-            contr.addDictionaryFromFile(ProgramTech.Language.EN, "words.txt");
+            contr.downloadDictionary(ProgramTech.Language.EN, "https://raw.githubusercontent.com/dwyl/english-words/master/words.txt");            
         }
 
         private void button_submit_Click(object sender, RoutedEventArgs e)

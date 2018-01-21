@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scoring_handler>
+<leZZtter>
+<name>a</name>
+<value>2</value>
+</letter>
+<letter>
+<name>b</name>
+<value>3</value>
+</letter>
+<letter>
+<name>c</name>
+<value>4</value>
+</letter>
+<letter>
+<name>d</name>
+<value>5</value>
+</letter>
+</scoring_handler>
