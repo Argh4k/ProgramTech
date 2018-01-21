@@ -54,6 +54,15 @@ namespace ProgramTech.Tests
             CollectionAssert.AreEquivalent(expectedWords, resultWords);
         }
 
+        [TestMethod()]
+        public void findyByFirstCharacterAndFixedLengthTest()
+        {
+            List<Word> expectedWords = testWords.Where(x => { return x.Content.First() == 'd' && x.Length == 5; }).ToList();
+            List<Word> resultWords = testDao.findyByFirstCharacterAndFixedLength(tableName, 'd', 5);
+            CollectionAssert.AreEquivalent(expectedWords, resultWords);
+        }
         
+
+
     }
 }
