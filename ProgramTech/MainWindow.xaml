@@ -69,8 +69,8 @@
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="BorderThickness" Value="0,0,1,2"/>
                         <Setter Property="BorderBrush" Value="Black"/>
-                        <Setter Property="Foreground" Value="#383838"/>
-                        <Setter Property="Background" Value="#fff880"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Background" Value="#6e578e"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
                         <Setter Property="FontSize" Value="20"/>
@@ -94,7 +94,7 @@
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="BorderThickness" Value="0"/>
                                 <Setter Property="Foreground" Value="Black"/>
-                                <Setter Property="Background" Value="#f1f2ae"/>
+                                <Setter Property="Background" Value="#fbc4ff"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
