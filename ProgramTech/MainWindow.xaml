@@ -27,12 +27,13 @@
         <Border Padding="100 0 100 20">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Letters -->
-                <Grid Margin="0 0 20 0" Grid.Column="0">
+                <Grid Margin="0 0 10 0" Grid.Column="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -56,7 +57,8 @@
                 <!-- number -->
                 <TextBox x:Name="txt_result_no" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" TextChanged="txt_number_TextChanged" Grid.Column="1"/>
                 <!-- Submit button -->
-                <Button x:Name="button_submit" Margin="20 0 0 0" Grid.Column="2" Content="Submit" Background="GhostWhite" Foreground="#3a3a3a" Click="button_submit_Click"/>
+                <Button x:Name="button_submit" Margin="10 0 0 0" Grid.Column="2" Content="Submit" Background="GhostWhite" Foreground="#3a3a3a" Click="button_submit_Click"/>
+                <Button x:Name="button_clear" Margin="5 0 0 0" Grid.Column="3" Content="Clear" Background="GhostWhite" Foreground="#3a3a3a" Click="button_clear_Click"/>
             </Grid>
         </Border>
         <!-- Results -->

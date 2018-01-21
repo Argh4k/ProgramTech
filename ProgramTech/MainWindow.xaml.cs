@@ -10,9 +10,12 @@ namespace ProgramTech
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private TextBox[] txt_chars;
         public MainWindow()
         {
             InitializeComponent();
+            txt_chars = new TextBox[] { txt_char1, txt_char2, txt_char3, txt_char4, txt_char5, txt_char6, txt_char7, txt_char8 };
             WordController contr = new WordController();
             ScoringHandler sc = new ScoringHandler("ScoringHandler.xml");
             Word.setScoringHandler(sc);
@@ -25,7 +28,7 @@ namespace ProgramTech
         {
             int numbOfResults;
             int.TryParse(txt_result_no.Text, out numbOfResults);
-            TextBox[] txt_chars = new TextBox[] { txt_char1, txt_char2, txt_char3, txt_char4, txt_char5, txt_char6, txt_char7, txt_char8 };
+            
             SearchEngine seng = new SearchEngine(numbOfResults);
             List<char> characters = new List<char>();
             foreach(TextBox textBox in txt_chars)
@@ -59,6 +62,16 @@ namespace ProgramTech
             {
                 MessageBox.Show("This textbox accepts only numbers");
                 txt_number.Text = String.Empty;
+            }
+        }
+
+        private void button_clear_Click(object sender, EventArgs e)
+        {
+            List<TextBox> textBoxList = new List<TextBox>(txt_chars);
+            textBoxList.Add(txt_result_no);
+            foreach(var txtBox in textBoxList)
+            {
+                txtBox.Text = String.Empty;
             }
         }
     }
