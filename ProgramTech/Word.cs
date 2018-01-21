@@ -8,18 +8,17 @@ namespace ProgramTech
     public class Word
     {
         private char firstLetter;
-        private string id;
         private int length;
         private int score;
         private string content;
         private static ScoringHandler scoringHandler;
 
-        public Word(string content)
+        public Word(string _content)
         {
-            this.content = content.ToLower();
-            this.length = content.Length;
+            this.content = _content.ToLower();
+            this.length = this.content.Length;
             this.score = scoringHandler.scoreWord(this.content);
-            this.firstLetter = content.First();
+            this.firstLetter = this.content.First();
         }
 
         public string Content
@@ -51,6 +50,20 @@ namespace ProgramTech
 
         }
 
+        public override bool Equals(Object obj)
+        {
+            // Check for null values and compare run-time types.
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Word w = (Word)obj;
+            return this.content == w.Content;
+        }
+        public override int GetHashCode()
+        {
+            return content.GetHashCode();
+        }
+
         static public Boolean isVaild(string word)
         {
             foreach(char c in word)
@@ -67,6 +80,8 @@ namespace ProgramTech
         {
             scoringHandler = sc;
         }
+
+
 
         
     }

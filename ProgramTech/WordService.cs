@@ -33,11 +33,11 @@ namespace ProgramTech
             {
                 using (var localDao = new WordDAO())
                 {
-                    return localDao.findAll(language, maxLength);
+                    return localDao.findAll(language.ToString(), maxLength);
                 }
             } else
             {
-                return staticDao.findAll(language, maxLength);
+                return staticDao.findAll(language.ToString(), maxLength);
             }
         }
 
@@ -47,12 +47,12 @@ namespace ProgramTech
             {
                 using (var localDao = new WordDAO())
                 {
-                    return localDao.findyByFirstCharacter(language, character, maxLength);
+                    return localDao.findyByFirstCharacter(language.ToString(), character, maxLength);
                 }
             }
             else
             {
-                return staticDao.findyByFirstCharacter(language, character, maxLength);
+                return staticDao.findyByFirstCharacter(language.ToString(), character, maxLength);
             }
         }
 
