@@ -94,10 +94,7 @@ namespace ProgramTech
             {
                 using (var localDao = new WordDAO())
                 {
-                    foreach (Word word in words)
-                    {
-                        localDao.saveBulk(wordTable, language.ToString());
-                    }
+                    localDao.saveBulk(wordTable, language.ToString());                    
                 }
             }
             else

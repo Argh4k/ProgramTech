@@ -56,6 +56,7 @@
     <Compile Include="SearchEngineTests.cs" />
     <Compile Include="WordControllerTests.cs" />
     <Compile Include="WordDAOTests.cs" />
+    <Compile Include="WordServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProgramTech\ProgramTech.csproj">
