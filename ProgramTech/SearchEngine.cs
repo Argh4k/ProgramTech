@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProgramTech
@@ -22,7 +21,6 @@ namespace ProgramTech
             {
                 returnLists.Add(Task.Run (() => { return excludeNotFitting(searchSingleCharacter(c, language, characters.Count), characters); }));
             }
-            Console.WriteLine(returnLists.Count);
             Task.WaitAll(returnLists.ToArray());
             List<Word> finalList = new List<Word>();
             foreach (var task in returnLists)
