@@ -36,7 +36,7 @@ namespace ProgramTech.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ScoringLackOfLetter))]
+        [ExpectedException(typeof(Exceptions.ScoringLackOfLetter))]
         public void scoreWordBadLetter()
         {
             string word = "de";
@@ -44,7 +44,7 @@ namespace ProgramTech.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ScoringFileNotFound))]
+        [ExpectedException(typeof(Exceptions.ScoringFileNotFound))]
         public void scoreFileNotFound()
         {
             int i = 0;
@@ -58,7 +58,7 @@ namespace ProgramTech.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ScoringFileBadFormatted))]
+        [ExpectedException(typeof(Exceptions.ScoringFileBadFormatted))]
         public void scoreFileBadFormatted()
         {
             ScoringHandler sc = new ScoringHandler("../../ScoringHandlerBadFormatted.xml");

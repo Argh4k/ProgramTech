@@ -13,10 +13,11 @@ namespace ProgramTech
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(WordController));
         public bool addDictionaryFromFile(Language language, string path)
         {
+            if (DatabaseController.getInstance().checkTableExists(language.ToString())) return false;
             List<Word> words = new List<Word>();
             if(!File.Exists(path))
             {
-                return false;
+                throw new Exceptions.WordControllerFileNotFoundException(path);
             } else
             {
                 foreach(string wordstring in File.ReadLines(path))
@@ -26,7 +27,6 @@ namespace ProgramTech
                         words.Add(new Word(wordstring));
                     } else
                     {
-                        //Wanted to do this, this way but it takes too much time
                         log.Info(String.Format("{0} was not added to database, because it is not forged only from letters", wordstring));
                     }
                 }
@@ -36,29 +36,41 @@ namespace ProgramTech
 
         public bool downloadDictionary(Language language, string url)
         {
-            List<Word> words = new List<Word>();
-            using(var client = new WebClient())
+            if (DatabaseController.getInstance().checkTableExists(language.ToString())) return false;
+            
+                List<Word> words = new List<Word>();
+            try
             {
-                using (System.IO.StringReader reader = new System.IO.StringReader(client.DownloadString(new Uri(url))))
+                using (var client = new WebClient())
                 {
-                    string line;
-                    while((line = reader.ReadLine()) != null) {
-                        if (Word.isVaild(line))
+                    using (System.IO.StringReader reader = new System.IO.StringReader(client.DownloadString(new Uri(url))))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
                         {
-                            words.Add(new Word(line));
+                            if (Word.isVaild(line))
+                            {
+                                words.Add(new Word(line));
+                            }
+                            else
+                            {
+                                log.Info(String.Format("{0} was not added to database, because it is not forged only from letters", line));
+                            }
                         }
-                        else
-                        {
-                            log.Info(String.Format("{0} was not added to database, because it is not forged only from letters", line));
-                        }
+
                     }
-                   
                 }
+            } catch (WebException ex)
+            {
+                throw new Exceptions.WordControllerWebException(url, ex);
             }
+                
             return WordService.getInstance().saveList(words, language);
+            }
+            
+
         }
 
         
 }
 
-}

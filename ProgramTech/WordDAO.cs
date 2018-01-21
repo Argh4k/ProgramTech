@@ -14,7 +14,7 @@ namespace ProgramTech
 
         public WordDAO()
         {
-            connection = DatabaseController.getSqlConnection();
+            connection = DatabaseController.getInstance().getSqlConnection();
         }
 
         public List<Word> findAll(string language, int maxLength)
