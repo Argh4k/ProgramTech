@@ -51,7 +51,6 @@ namespace ProgramTech
                 wordList = seng.search(characters, ProgramTech.Language.EN);
             }
             datagrid_words.ItemsSource = wordList;
-            //log4net.LogManager.GetLogger(typeof(WordController)).Info(String.Format("{0} not added to database as it is not consisted only of letters", wordstring));
 
             WordService.getInstance().Dispose();
         }
@@ -85,6 +84,17 @@ namespace ProgramTech
             {
                 txtBox.Text = String.Empty;
             }
+            datagrid_words.ItemsSource = new List<Word>();
+        }
+
+        private void button_file_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button_url_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

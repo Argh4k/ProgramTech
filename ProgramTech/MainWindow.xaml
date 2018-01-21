@@ -127,15 +127,13 @@
             <StackPanel>
                 <TextBlock Margin="0,0,0,2" Text="Load your own dictionary: " Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Button Height="30" Padding="5, 0" Margin="5, 0" Grid.Column="0" Content="From File"/>
-                <Button Height="30" Padding="5, 0" Margin="5, 0" Grid.Column="1" Content="From URL"/>
-                <Button Height="30" Padding="5, 0" Margin="5, 0" Grid.Column="2" Content="Load own dictionary"/>
-            </Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="button_file" Height="30" Padding="5, 0" Margin="5, 0" Grid.Column="0" Content="From File" Click="button_file_Click"/>
+                    <Button x:Name="button_url" Height="30" Padding="5, 0" Margin="5, 0" Grid.Column="1" Content="From URL" Click="button_url_Click"/>
+                </Grid>
             </StackPanel>
         </Border>
     </StackPanel>
