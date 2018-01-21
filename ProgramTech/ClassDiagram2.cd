@@ -18,7 +18,7 @@
   <Class Name="ProgramTech.Word">
     <Position X="2.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAgAQAAgAAEAIAAhAAIBAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AAACAAAAAgAQAAgAgEAIAAhAAIBAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Word.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -35,14 +35,14 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAEAACAAAAA=</HashCode>
       <FileName>WordController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProgramTech.WordDAO">
     <Position X="5.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACCAAAAAIAABAAEAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACCAAAAAIAABCAEAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>WordDAO.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -50,37 +50,10 @@
   <Class Name="ProgramTech.DatabaseController">
     <Position X="6.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAABAAAAAAAgAAAAAEA=</HashCode>
+      <HashCode>AAAAAAAAACAACIAAAAABCAAAAABBAAQAAAAgAAAAAAQ=</HashCode>
       <FileName>DatabaseController.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="ProgramTech.ScoringHandlerException">
-    <Position X="7.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ScoringHandlerException.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ProgramTech.ScoringFileNotFound">
-    <Position X="10" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ScoringFileNotFound.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ProgramTech.ScoringFileBadFormatted">
-    <Position X="11" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ScoringFileBadFormatted.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ProgramTech.ScoringLackOfLetter">
-    <Position X="4.75" Y="1" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ScoringLackOfLetter.cs</FileName>
-    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Enum Name="ProgramTech.Language">
     <Position X="5.75" Y="2.75" Width="1.5" />

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
-using System.Text;
 
 namespace ProgramTech
 {
@@ -14,7 +13,7 @@ namespace ProgramTech
 
         public WordDAO()
         {
-            connection = DatabaseController.getSqlConnection();
+            connection = DatabaseController.getInstance().getSqlConnection();
         }
 
         public List<Word> findAll(string language, int maxLength)

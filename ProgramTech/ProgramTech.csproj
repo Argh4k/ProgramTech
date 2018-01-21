@@ -76,14 +76,17 @@
     </ApplicationDefinition>
     <Compile Include="DatabaseController.cs" />
     <Compile Include="Language.cs" />
-    <Compile Include="ScoringFileBadFormatted.cs" />
-    <Compile Include="ScoringFileNotFound.cs" />
+    <Compile Include="Exceptions\ScoringFileBadFormatted.cs" />
+    <Compile Include="Exceptions\ScoringFileNotFound.cs" />
     <Compile Include="ScoringHandler.cs" />
-    <Compile Include="ScoringHandlerException.cs" />
-    <Compile Include="ScoringLackOfLetter.cs" />
+    <Compile Include="Exceptions\ScoringHandlerException.cs" />
+    <Compile Include="Exceptions\ScoringLackOfLetter.cs" />
     <Compile Include="SearchEngine.cs" />
     <Compile Include="Word.cs" />
     <Compile Include="WordController.cs" />
+    <Compile Include="Exceptions\WordControllerException.cs" />
+    <Compile Include="Exceptions\WordControllerFileNotFoundException.cs" />
+    <Compile Include="Exceptions\WordControllerWebException.cs" />
     <Compile Include="WordDAO.cs" />
     <Compile Include="WordService.cs" />
     <Page Include="MainWindow.xaml">

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Data;
 
 namespace ProgramTech
@@ -89,7 +88,7 @@ namespace ProgramTech
     
         public bool saveList(List<Word> words, Language language, bool async = false)
         {
-            DatabaseController.addTable(language.ToString());
+            DatabaseController.getInstance().addTable(language.ToString());
             DataTable wordTable = toDataTable(words);
             if (async)
             {

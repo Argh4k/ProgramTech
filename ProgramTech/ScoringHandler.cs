@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 using System.IO;
 using System.Xml;
-using System.Collections;
 
 namespace ProgramTech
 {
@@ -28,11 +26,11 @@ namespace ProgramTech
                 }
             }catch(FileNotFoundException ex)
             {
-                throw new ScoringFileNotFound(filePath);
+                throw new Exceptions.ScoringFileNotFound(filePath);
             }
             catch(XmlException ex)
             {
-                throw new ScoringFileBadFormatted(ex.Message);
+                throw new Exceptions.ScoringFileBadFormatted(ex.Message);
             }
            
         }
@@ -53,7 +51,7 @@ namespace ProgramTech
                 } 
                 catch(KeyNotFoundException ex)
                 {
-                    throw new ScoringLackOfLetter(ch);
+                    throw new Exceptions.ScoringLackOfLetter(ch);
                 }
             }
             return value;

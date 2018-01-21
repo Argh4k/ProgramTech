@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProgramTech;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProgramTech.Tests
 {
@@ -17,7 +13,8 @@ namespace ProgramTech.Tests
         [ClassInitialize()]
         public static void intialize(TestContext tc)
         {
-            DatabaseController.addTable(tableName);
+            DatabaseController.getInstance().removeTable(tableName);
+            DatabaseController.getInstance().addTable(tableName);
             Word.setScoringHandler(new ScoringHandler("../../ScoringHandlerDaoTests.xml"));
             testWords = new List<Word>(new Word[] { new Word("Daddy"), new Word("Mom"), new Word("Dnow"), new Word("Grandpa") });
             testDao = new WordDAO();
@@ -31,6 +28,7 @@ namespace ProgramTech.Tests
         public static void cleanup()
         {
             testDao.Dispose();
+            DatabaseController.getInstance().removeTable(tableName);
         }
 
         [TestMethod()]
