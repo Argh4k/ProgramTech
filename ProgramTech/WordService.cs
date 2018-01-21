@@ -56,6 +56,21 @@ namespace ProgramTech
             }
         }
 
+        public List<Word> getByFirstCharacterAndLength(Language language, char character, int length, bool async = false)
+        {
+            if (async)
+            {
+                using (var localDao = new WordDAO())
+                {
+                    return localDao.findyByFirstCharacterAndFixedLength(language.ToString(), character, length);
+                }
+            }
+            else
+            {
+                return staticDao.findyByFirstCharacterAndFixedLength(language.ToString(), character, length);
+            }
+        }
+
         public bool save(Word word, Language language, bool async = false)
         {
             if (async)

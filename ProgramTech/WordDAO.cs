@@ -19,7 +19,7 @@ namespace ProgramTech
 
         public List<Word> findAll(string language, int maxLength)
         {
-            List<Word> toReturn = new List<Word>(); ;
+            List<Word> toReturn = new List<Word>();
             string query = string.Format("SELECT * FROM {0} WHERE length <= {1} ORDER BY SCORE DESC", language, maxLength);
             using (var command = new SqlCommand(query, connection))
             {
@@ -51,6 +51,22 @@ namespace ProgramTech
             return toReturn;
         }
 
+        public List<Word> findyByFirstCharacterAndFixedLength(string language, char character, int length)
+        {
+            List<Word> toReturn = new List<Word>(); ;
+            string query = string.Format("SELECT * FROM {0} WHERE first_letter = '{1}' AND length = {2} ORDER BY SCORE DESC", language, character, length);
+            using (var command = new SqlCommand(query, connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        toReturn.Add(new Word(reader["word"].ToString()));
+                    }
+                }
+            }
+            return toReturn;
+        }
 
         public bool save(Word word, string language)
         {

@@ -39,7 +39,18 @@ namespace ProgramTech
                 }
             }
 
-            datagrid_words.ItemsSource = seng.search(characters, ProgramTech.Language.EN);
+            List<Word> wordList;
+            if (!txt_length.Text.Equals(String.Empty))
+            {
+                int expLenght = int.Parse(txt_length.Text);
+                wordList = seng.search(characters, ProgramTech.Language.EN, expLenght);
+                wordList = wordList.FindAll(w => (w.Length == expLenght));
+            }
+            else
+            {
+                wordList = seng.search(characters, ProgramTech.Language.EN);
+            }
+            datagrid_words.ItemsSource = wordList;
             //log4net.LogManager.GetLogger(typeof(WordController)).Info(String.Format("{0} not added to database as it is not consisted only of letters", wordstring));
 
             WordService.getInstance().Dispose();
@@ -69,6 +80,7 @@ namespace ProgramTech
         {
             List<TextBox> textBoxList = new List<TextBox>(txt_chars);
             textBoxList.Add(txt_result_no);
+            textBoxList.Add(txt_length);
             foreach(var txtBox in textBoxList)
             {
                 txtBox.Text = String.Empty;

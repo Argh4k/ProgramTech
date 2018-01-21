@@ -32,10 +32,36 @@ namespace ProgramTech
             return finalList.OrderByDescending(word => word.Score).Take(resultLength).ToList();
         }
 
+        public List<Word> search(List<char> characters, Language language, int maxLenght)
+        {
+            ISet<char> charSet = new HashSet<char>(characters);
+            var returnLists = new List<Task<List<Word>>>();
+            foreach (char c in charSet)
+            {
+                returnLists.Add(Task.Run(() => { return excludeNotFitting(searchSingleCharacter(c, language, maxLenght), characters); }));
+            }
+            Console.WriteLine(returnLists.Count);
+            Task.WaitAll(returnLists.ToArray());
+            List<Word> finalList = new List<Word>();
+            foreach (var task in returnLists)
+            {
+                finalList.AddRange(task.Result);
+            }
+            return finalList.OrderByDescending(word => word.Score).Take(resultLength).ToList();
+        }
+
+
         private List<Word> searchSingleCharacter(char ch, Language language, int maxLength)
         {
             List<Word> words;
             words = WordService.getInstance().getByFirstCharacter(language, ch, maxLength, true);
+            return words;
+        }
+
+        private List<Word> searchSingleCharacterAndLength(char ch, Language language, int length)
+        {
+            List<Word> words;
+            words = WordService.getInstance().getByFirstCharacterAndLength(language, ch, length, true);
             return words;
         }
 
