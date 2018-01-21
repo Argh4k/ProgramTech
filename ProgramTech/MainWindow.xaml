@@ -44,35 +44,64 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox x:Name="txt_char1" MaxLength="1" Foreground="#686868" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="0" TextChanged="txt_char_TextChanged"/>
-                    <TextBox x:Name="txt_char2" MaxLength="1" Foreground="#686868" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="1" TextChanged="txt_char_TextChanged"/>
-                    <TextBox x:Name="txt_char3" MaxLength="1" Foreground="#686868" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="2" TextChanged="txt_char_TextChanged"/>
-                    <TextBox x:Name="txt_char4" MaxLength="1" Foreground="#686868" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="3" TextChanged="txt_char_TextChanged"/>
-                    <TextBox x:Name="txt_char5" MaxLength="1" Foreground="#686868" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="4" TextChanged="txt_char_TextChanged"/>
-                    <TextBox x:Name="txt_char6" MaxLength="1" Foreground="#686868" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="5" TextChanged="txt_char_TextChanged"/>
-                    <TextBox x:Name="txt_char7" MaxLength="1" Foreground="#686868" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="6" TextChanged="txt_char_TextChanged"/>
-                    <TextBox x:Name="txt_char8" MaxLength="1" Foreground="#686868" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="7" TextChanged="txt_char_TextChanged"/>
+                    <TextBox x:Name="txt_char1" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="0" TextChanged="txt_char_TextChanged"/>
+                    <TextBox x:Name="txt_char2" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="1" TextChanged="txt_char_TextChanged"/>
+                    <TextBox x:Name="txt_char3" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="2" TextChanged="txt_char_TextChanged"/>
+                    <TextBox x:Name="txt_char4" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="3" TextChanged="txt_char_TextChanged"/>
+                    <TextBox x:Name="txt_char5" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="4" TextChanged="txt_char_TextChanged"/>
+                    <TextBox x:Name="txt_char6" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="5" TextChanged="txt_char_TextChanged"/>
+                    <TextBox x:Name="txt_char7" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="6" TextChanged="txt_char_TextChanged"/>
+                    <TextBox x:Name="txt_char8" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="7" TextChanged="txt_char_TextChanged"/>
                 </Grid>
                 <!-- number -->
-                <TextBox x:Name="txt_result_no" MaxLength="1" Foreground="#686868" FontSize="25" Padding="2" TextAlignment="Center" TextChanged="txt_number_TextChanged" Grid.Column="1"/>
+                <TextBox x:Name="txt_result_no" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" TextChanged="txt_number_TextChanged" Grid.Column="1"/>
                 <!-- Submit button -->
-                <Button x:Name="button_submit" Margin="20 0 0 0" Grid.Column="2" Content="Submit" Background="GhostWhite" Foreground="#686868" Click="button_submit_Click"/>
+                <Button x:Name="button_submit" Margin="20 0 0 0" Grid.Column="2" Content="Submit" Background="GhostWhite" Foreground="#3a3a3a" Click="button_submit_Click"/>
             </Grid>
         </Border>
         <!-- Results -->
-        <Border Padding="100 0">
-            <DataGrid x:Name="wordsGrid" AutoGenerateColumns="False">
+        <Border Padding="100 25">
+            <DataGrid x:Name="datagrid_words" IsReadOnly="True" SelectionMode="Single" 
+                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                      CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False"
+                      CanUserSortColumns="False" DataContextChanged="datagrid_words_DataContextChanged">
                 <DataGrid.Resources>
-                    <Style  TargetType="{x:Type DataGridColumnHeader}">
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="BorderThickness" Value="0,0,1,2"/>
                         <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="Foreground" Value="#383838"/>
+                        <Setter Property="Background" Value="#fff880"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                    </Style>
+                    <Style x:Key="MyDataGridCellStyle" TargetType="{x:Type DataGridCell}">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="#3a3a3a"/>
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Grid Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Background" Value="#f1f2ae"/>
+                            </Trigger>
+                        </Style.Triggers>
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Word" IsReadOnly="True" Binding="{Binding Content}" Width="*"/>
-                    <DataGridTextColumn Header="Score" IsReadOnly="True" Binding="{Binding Score}" Width="*"/>
+                    <DataGridTextColumn Header="Word" IsReadOnly="True" Binding="{Binding Content}" Width="*" CellStyle="{StaticResource MyDataGridCellStyle}"/>
+                    <DataGridTextColumn Header="Score" IsReadOnly="True" Binding="{Binding Score}" Width="*" CellStyle="{StaticResource MyDataGridCellStyle}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

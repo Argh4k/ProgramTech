@@ -23,14 +23,10 @@ namespace ProgramTech
         public MainWindow()
         {
             InitializeComponent();
-            
             WordController contr = new WordController();
             ScoringHandler sc = new ScoringHandler("ScoringHandler.xml");
             Word.setScoringHandler(sc);
             contr.addDictionaryFromFile(ProgramTech.Language.EN, "words.txt");
-            
-            
-            
         }
 
         private void button_submit_Click(object sender, RoutedEventArgs e)
@@ -44,12 +40,11 @@ namespace ProgramTech
             {
                 if(textBox.Text.Length > 0)
                 {
-                    characters.Add(textBox.Text[0]);
+                    characters.Add(textBox.Text.ToLower()[0]);
                 }
             }
 
-            wordsGrid.ItemsSource = seng.search(characters, ProgramTech.Language.EN);
-
+            datagrid_words.ItemsSource = seng.search(characters, ProgramTech.Language.EN);
             //log4net.LogManager.GetLogger(typeof(WordController)).Info(String.Format("{0} not added to database as it is not consisted only of letters", wordstring));
 
             WordService.getInstance().Dispose();
