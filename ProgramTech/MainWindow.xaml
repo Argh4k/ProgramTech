@@ -63,8 +63,8 @@
         <Border Padding="100 25">
             <DataGrid x:Name="datagrid_words" IsReadOnly="True" SelectionMode="Single" 
                       AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
-                      CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False"
-                      CanUserSortColumns="False" DataContextChanged="datagrid_words_DataContextChanged">
+                      CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                      CanUserResizeRows="False" CanUserSortColumns="False">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="BorderThickness" Value="0,0,1,2"/>
