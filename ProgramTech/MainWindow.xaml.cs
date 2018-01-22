@@ -12,7 +12,7 @@ namespace ProgramTech
     [ExcludeFromCodeCoverage]
     public partial class MainWindow : Window
     {
-
+        private ProgramTech.Language SelectedLang { get; set; }
         private WordController contr;
         private TextBox[] txt_chars;
         public MainWindow()
@@ -47,7 +47,7 @@ namespace ProgramTech
             if (!txt_length.Text.Equals(String.Empty))
             {
                 int expLenght = int.Parse(txt_length.Text);
-                wordList = seng.search(characters, ProgramTech.Language.EN, expLenght);
+                wordList = seng.search(characters, SelectedLang, expLenght);
                 wordList = wordList.FindAll(w => (w.Length == expLenght));
             }
             else
@@ -154,6 +154,28 @@ namespace ProgramTech
                 contr.downloadDictionary(lang, writtenUrl);
                 MessageBox.Show("Dictionary added!");
             }
+        }
+
+        private void combo_lang_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            string lang = combo.SelectedItem as string;
+            SelectedLang = (ProgramTech.Language)Enum.Parse(typeof(ProgramTech.Language), lang);
+        }
+
+        private void combo_lang_Loaded(object sender, RoutedEventArgs e)
+        {
+            string[] langs = Enum.GetNames(typeof(ProgramTech.Language));
+            List<string> itemSources = new List<string>();
+            foreach (string lang in langs)
+            {
+                if(DatabaseController.getInstance().checkTableExists(lang))
+                {
+                    itemSources.Add(lang);
+                }
+            }
+            combo_lang.ItemsSource = itemSources;
+            combo_lang.SelectedIndex = 0;
         }
     }
 }

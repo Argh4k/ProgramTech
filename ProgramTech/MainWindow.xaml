@@ -15,18 +15,20 @@
         <Border Padding="100 190 100 0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Letters" FontSize="17" Foreground="White"/>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Margin="0,0,1,0" Text="Amount" FontSize="17" Foreground="White"/>
-                    <TextBlock Grid.Column="1" Margin="1,0,0,0" Text="Length" FontSize="17" Foreground="White"/>
+                    <TextBlock Grid.Column="0" Text="Language" FontSize="17" Foreground="White"/>
+                    <TextBlock Grid.Column="1" Margin="0,0,1,0" Text="Amount" FontSize="17" Foreground="White"/>
+                    <TextBlock Grid.Column="2" Margin="1,0,0,0" Text="Length" FontSize="17" Foreground="White"/>
                 </Grid>
             </Grid>
         </Border>
@@ -34,7 +36,8 @@
         <Border Padding="100 0 100 20">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -61,8 +64,12 @@
                     <TextBox x:Name="txt_char7" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="6" TextChanged="txt_char_TextChanged"/>
                     <TextBox x:Name="txt_char8" MaxLength="1" Foreground="#3a3a3a" FontSize="25" Padding="6" TextAlignment="Center" Grid.Column="7" TextChanged="txt_char_TextChanged"/>
                 </Grid>
+                
+                <!--Language choose menu-->
+                <ComboBox x:Name="combo_lang" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,2,0" Grid.Column="1" SelectionChanged="combo_lang_SelectionChanged" Loaded="combo_lang_Loaded" />
+
                 <!-- numbers -->
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -72,8 +79,8 @@
                 </Grid>
                 
                 <!-- Submit button -->
-                <Button x:Name="button_submit" Margin="10 0 0 0" Grid.Column="2" Content="Submit" Background="GhostWhite" Foreground="#3a3a3a" Click="button_submit_Click"/>
-                <Button x:Name="button_clear" Margin="5 0 0 0" Grid.Column="3" Content="Clear" Background="GhostWhite" Foreground="#3a3a3a" Click="button_clear_Click"/>
+                <Button x:Name="button_submit" Margin="10 0 0 0" Grid.Column="3" Content="Submit" Background="GhostWhite" Foreground="#3a3a3a" Click="button_submit_Click"/>
+                <Button x:Name="button_clear" Margin="5 0 0 0" Grid.Column="4" Content="Clear" Background="GhostWhite" Foreground="#3a3a3a" Click="button_clear_Click"/>
             </Grid>
         </Border>
         <!-- Results -->
