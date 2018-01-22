@@ -20,7 +20,7 @@ namespace ProgramTech
         {
             try
             {
-                using (StreamReader streamReader = new StreamReader(filePath, true))
+                using (StreamReader streamReader = new StreamReader(filePath, System.Text.Encoding.GetEncoding("iso-8859-1")))
                 {
                     XElement doc = XElement.Load(streamReader);
                     foreach (XElement xe in doc.Elements("letter"))

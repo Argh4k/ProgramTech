@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace ProgramTech
     /// <summary>
     /// Interaction logic for AgreeWindow.xaml
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public partial class AgreeWindow : Window
     {
         public Boolean Agreement;

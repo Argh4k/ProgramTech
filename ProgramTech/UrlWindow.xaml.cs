@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace ProgramTech
     /// <summary>
     /// Interaction logic for UrlWindow.xaml
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public partial class UrlWindow : Window
     {
         public string url { get; set; }

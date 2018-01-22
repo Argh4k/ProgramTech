@@ -61,10 +61,14 @@ namespace ProgramTech
         private void txt_char_TextChanged(object sender, EventArgs e)
         {
             TextBox txt_char = (TextBox)sender;
-            if (!txt_char.Text.Equals(String.Empty)  && !System.Text.RegularExpressions.Regex.IsMatch(txt_char.Text, "^[a-zA-Z]"))
+            if (!txt_char.Text.Equals(String.Empty))//  && !System.Text.RegularExpressions.Regex.IsMatch(txt_char.Text, "^[a-zA-Z]"))
             {
-                MessageBox.Show("This textbox accepts only alphabetical characters");
-                txt_char.Text = String.Empty;
+                char c = txt_char.Text[0];
+                if ((Char.IsDigit(c) || Char.IsSymbol(c) || Char.IsControl(c) || Char.IsPunctuation(c)))
+                {
+                    MessageBox.Show("This textbox accepts only alphabetical characters");
+                    txt_char.Text = String.Empty;
+                }
             }
         }
 

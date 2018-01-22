@@ -67,7 +67,7 @@ namespace ProgramTech
 
             foreach (char c in word)
             {
-                if (Char.IsDigit(c) || Char.IsSymbol(c) || Char.IsControl(c))
+                if (Char.IsDigit(c) || Char.IsSymbol(c) || Char.IsControl(c)  || Char.IsPunctuation(c))
                 {
                     return false;
                 }
