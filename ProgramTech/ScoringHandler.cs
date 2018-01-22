@@ -20,11 +20,17 @@ namespace ProgramTech
         {
             try
             {
-                foreach (XElement xe in XElement.Load(filePath).Elements("letter"))
+                using (StreamReader streamReader = new StreamReader(filePath, true))
                 {
-                    charScores.Add(xe.Element("name").Value.First(), Int32.Parse(xe.Element("value").Value));
+                    XElement doc = XElement.Load(streamReader);
+                    foreach (XElement xe in doc.Elements("letter"))
+                    {
+                        charScores.Add(xe.Element("name").Value.First(), Int32.Parse(xe.Element("value").Value));
+                    }
                 }
-            }catch(FileNotFoundException ex)
+
+            }
+            catch(FileNotFoundException ex)
             {
                 throw new Exceptions.ScoringFileNotFound(filePath);
             }
@@ -39,7 +45,7 @@ namespace ProgramTech
         public int scoreWord(string word)
         {
             int value = 0;
-            foreach(char ch in word)
+            foreach(var ch in word)
             {
                 try
                 {

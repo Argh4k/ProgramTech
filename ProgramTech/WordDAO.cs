@@ -84,6 +84,7 @@ namespace ProgramTech
 
         public bool saveBulk(DataTable wordsTable, string language)
         {
+            connection = DatabaseController.getInstance().getSqlConnection();
             try
             {
                 using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
