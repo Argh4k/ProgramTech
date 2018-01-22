@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgramTech"
         mc:Ignorable="d"
-        Title="UrlWindow" Height="150" Width="300">
+        Title="" Height="150" Width="300">
     <StackPanel>
         <Border Padding="0, 10, 0, 0">
             <StackPanel HorizontalAlignment="Center">
