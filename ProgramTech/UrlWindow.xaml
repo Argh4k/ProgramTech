@@ -9,7 +9,7 @@
     <StackPanel>
         <Border Padding="0, 10, 0, 0">
             <StackPanel HorizontalAlignment="Center">
-                <TextBlock Text="Dictionary with this language currently exists." HorizontalAlignment="Center" Padding="0,0,0,4"/>
+                <TextBlock Text="Write a link to dictionary." HorizontalAlignment="Center" Padding="0,0,0,4"/>
                 <TextBox x:Name="txt_url_dict"/>
             </StackPanel>
         </Border>
