@@ -41,7 +41,7 @@ namespace ProgramTech
             if(!checkTableExists(tableName))
             {
                 log.Info(String.Format("Creating database {0}", tableName));
-                string query = string.Format("CREATE TABLE {0}(word varchar(50), score int, first_letter char(1), length int);", tableName);
+                string query = string.Format("CREATE TABLE {0}(word nvarchar(50), score int, first_letter nchar(1), length int);", tableName);
                 using (var command2 = new SqlCommand(query, connection))
                     command2.ExecuteNonQuery();
             }

@@ -69,16 +69,24 @@ namespace ProgramTech
 
         public bool save(Word word, string language)
         {
-            string query = string.Format("INSERT INTO {0} VALUES ('{1}', '{2}', '{3}', '{4}');", language, word.Content, word.Score, word.Content.First(), word.Length);
+            string query = string.Format("INSERT INTO {0} VALUES (@cont, @scr, @first, @length);", language);
             using (var command = new SqlCommand(query, connection))
+            {
+                command.Parameters.Add("@cont", SqlDbType.NVarChar, 50).Value = word.Content;
+                command.Parameters.Add("@scr", SqlDbType.Int).Value = word.Score;
+                command.Parameters.Add("@first", SqlDbType.NChar).Value = word.Content.First();
+                command.Parameters.Add("@length", SqlDbType.Int).Value = word.Length;
+
                 try
                 {
                     command.ExecuteNonQuery();
-                } catch (SqlException ex)
+                }
+                catch (SqlException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Info(ex.Message);
                     return false;
                 }
+            }
             return true;
         }
 

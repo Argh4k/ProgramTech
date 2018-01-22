@@ -136,5 +136,19 @@ namespace ProgramTech.Tests
             CollectionAssert.AreEquivalent(testWords, result);
         }
 
+        [TestMethod()]
+        public void savePolishLetter()
+        {
+            if (DatabaseController.getInstance().checkTableExists(tableName.ToString()))
+            {
+                DatabaseController.getInstance().removeTable(tableName.ToString());
+            }
+            DatabaseController.getInstance().addTable(tableName.ToString());
+            Assert.IsTrue(WordService.getInstance().save(new Word("ćma"), tableName));
+            List<Word> result = WordService.getInstance().getAll(tableName, 1000);
+            List<Word> expected = new List<Word>(new Word[] { new Word("ćma") });
+            CollectionAssert.AreEquivalent(expected, result);
+        }
+
     }
 }

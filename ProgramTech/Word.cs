@@ -64,13 +64,15 @@ namespace ProgramTech
 
         static public Boolean isVaild(string word)
         {
-            foreach(char c in word)
+
+            foreach (char c in word)
             {
-                if(!Char.IsLetter(c))
+                if (Char.IsDigit(c) || Char.IsSymbol(c) || Char.IsControl(c))
                 {
                     return false;
                 }
             }
+            
             return true;
         }
 

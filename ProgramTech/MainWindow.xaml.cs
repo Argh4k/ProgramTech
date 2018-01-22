@@ -24,7 +24,6 @@ namespace ProgramTech
             Word.setScoringHandler(sc);
             //contr.downloadDictionary(ProgramTech.Language.EN, "https://raw.githubusercontent.com/dwyl/english-words/master/words.txt");
             contr.downloadDictionary(ProgramTech.Language.EN, "http://www.mieliestronk.com/corncob_lowercase.txt");
-            //contr.addDictionaryFromFile(ProgramTech.Language.EN, "words.txt");
 
         }
 
